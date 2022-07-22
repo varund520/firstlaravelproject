@@ -6,29 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body> 
+<body>
+
+  {!!$html!!}
+
+  <p>{{ $id ? $id : '' }}</p>
+
+        {{-- @if($name == "varun")
+                {{"Your name is varun"}}
+            @elseif($name == "avinash")
+                {{"Your name is avinash"}}
+            @else
+                {{"your name is not varun or avinash"}}
+        @endif --}}
+
+        @unless ($name === 'varun')
+            {{'it will print when name is not equal to varun'}}
+        @endunless
     
-        {{-- For loop --}}
-        @for ($i=0; $i<=10; $i++)
-            {{ $i }}
-        @endfor
-
-        {{-- While loop --}}
-        @php $j = 1; @endphp
-        @while ($j<=10)
-            {{ $j }}
-            @php $j++; @endphp
-        @endwhile        
-
-        {{-- Foreach loop --}}
-        @php
-            $arr = [1,2,3,4,5,6,7,8,9,10];
-        @endphp
-        @foreach ($arr as $a)
-            {{ $a }}
-        @endforeach
-
-
-
 </body>
 </html>

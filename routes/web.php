@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\user;
-use App\Http\Controllers\photos;
-use App\Http\Controllers\register;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,52 +13,34 @@ use App\Http\Controllers\register;
 |
 */
 
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-    Route::get('/',[user::class,'index']);
-    Route::get('/about-us',[user::class,'aboutUS']);
+    Route::get('/test',function() {
+        echo "this is tesing the route";    
+    });
 
-    Route::resource('/photos',photos::class);
 
-    Route::resource('/photos',photos::class);
+    Route::get('/demo/{name}/{id?}',function($name,$id = NULL) {
+        $html = "<h1>this is testing the h1 tag</h1>";
+        $data = compact('name', 'id','html');
+        return view('demo')->with($data);
+    });
 
-    Route::get('/register',[register::class,'index']);
+    Route::post('/postapi',function(){
+        echo "this is testing the post api";
+    });
 
-    Route::post('/register',[register::class,'register']);
+    Route::get('/unlessendunless/{name}/{email?}',function($name,$email){
+        $data = compact('name','email');
+        return view('demo')->with($data);
+    });
 
-    // Route::get('/', function () {
-    //     return view('home');
-    // });
+    Route::get('/add-student',function(){
+        return view('add-student');
+    });
 
-    // Route::get('/about-us', function () {
-    //     return view('about-us');
-    // });
-    
-    // Route::get('/test',function() {
-    //     echo "this is tesing the route";            
-    // });
-
-    // Route::get('/demo/{name?}/{id?}',function($name=NULL,$id = NULL) {
-    //     $html = "<h1>this is testing the h1 tag</h1>";
-    //     $data = compact('name', 'id','html');
-    //     return view('demo')->with($data);
-    // });
-
-    // Route::get('/postapi',function(){
-    //     echo "this is testing the post api";
-    // });
-
-    // Route::get('/unlessendunless/{name}/{email?}/{id?}',function($name,$email=NULL){
-    //         $html = '';
-    //         $html = '<h1>this is heading</h1>';
-    //         $html.= '<p>this is paragraph</p>';
-    //         $data = compact('name','email','html');
-    //         return view('demo')->with($data);
-    // });
-
-    // Route::get('/postapi/{name}/{email?}/{password}',function($name,$email,$password){
-    //     $data = compact('name','email','password');
-    //     return view('postapi')->with($data);
-    // });
 
 
 
